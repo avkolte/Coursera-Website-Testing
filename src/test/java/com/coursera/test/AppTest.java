@@ -1,18 +1,24 @@
 package com.coursera.test;
 
+import java.io.IOException;
+
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
+
+import resources.Driver;
 
 /**
  * Unit test for simple App.
  */
 public class AppTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
+   public WebDriver driver;
     @Test
-    public void shouldAnswerWithTrue()
+    public void shouldAnswerWithTrue() throws IOException
     {
-        assert( true );
+        Driver driver = new Driver();
+        driver.initializeDriver();
+        
+    	assert( true );
     }
 }
