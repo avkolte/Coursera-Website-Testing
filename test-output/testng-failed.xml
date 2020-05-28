@@ -3,11 +3,13 @@
 <suite parallel="none" name="Failed suite [Default suite]">
   <test parallel="none" name="Default test(failed)">
     <classes>
-      <class name="com.coursera.test.AppTest">
+      <class name="com.coursera.test.SearchTest">
         <methods>
-          <include name="shouldAnswerWithTrue"/>
+          <include name="closeDriver"/>
+          <include name="search"/>
+          <include name="createDriver"/>
         </methods>
-      </class> <!-- com.coursera.test.AppTest -->
+      </class> <!-- com.coursera.test.SearchTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

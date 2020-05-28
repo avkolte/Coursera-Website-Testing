@@ -19,6 +19,7 @@ public class Driver {
 
 	public static WebDriver driver;
 	public Properties prop;
+
 public WebDriver initializeDriver() throws IOException
 {
 	
@@ -35,15 +36,16 @@ if(browserName.equals("chrome"))
 	driver= new ChromeDriver();
 		
 	System.out.println("Driver Initalizeed...");
+	driver.get(prop.getProperty("url"));
 	
 }
 else if (browserName.equals("firefox"))
 {
 	
 	 System.setProperty("webdriver.gecko.driver", "/home/avkolte/eclipse-workspace/coursera-testing/drivers/geckodriver");
-
+;
 	 driver= new FirefoxDriver();
-	 driver.get("http://www.coursera.org");
+	 driver.get(prop.getProperty("url"));
 	
 }
 
@@ -53,6 +55,7 @@ else if(browserName.equals("opera"))
 	driver= new OperaDriver();
 		
 	System.out.println("Driver Initalizeed...");
+	driver.get(prop.getProperty("url"));
 	
 }
 
