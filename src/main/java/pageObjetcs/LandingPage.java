@@ -1,7 +1,6 @@
 package pageObjetcs;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -19,7 +18,7 @@ public class LandingPage {
 
 	 public void readData() throws IOException
 	 {
-		fis=new FileInputStream("/home/avkolte/eclipse-workspace/coursera-testing/src/main/java/resources/data.properties");
+		fis=new FileInputStream("/home/avkolte/eclipse-workspace/coursera-testing/src/main/java/resources/config.properties");
 
 			prop.load(fis);
 	 }

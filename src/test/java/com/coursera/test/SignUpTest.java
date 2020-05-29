@@ -1,5 +1,5 @@
 package com.coursera.test;
 
-public class LoginTest {
+public class SignUpTest {
 
 }
