@@ -1,1 +1,5 @@
-com/coursera/test/App.class
+resources/readExcel.class
+pageObjetcs/App.class
+resources/ScreenShot.class
+resources/Driver.class
+pageObjetcs/LandingPage.class

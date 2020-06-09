@@ -4,9 +4,9 @@
   <test name="Search">
   	<classes>
   		<class name="com.coursera.test.SearchTest"/>
-  		<class name="com.coursera.test.FilterTest"/>
-  		<class name="com.coursera.test.HrsRatingTest"/>
-  		<class name="com.coursera.test.SignUpTest"/>
+  		//<class name="com.coursera.test.FilterTest"/>
+  		//<class name="com.coursera.test.HrsRatingTest"/>
+  		//<class name="com.coursera.test.SignUpTest"/>
   	</classes>
   </test> 
 </suite> 
