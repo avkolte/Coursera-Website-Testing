@@ -30,7 +30,7 @@ if(browserName.equals("chrome"))
 	 System.setProperty("webdriver.chrome.driver", "/home/avkolte/eclipse-workspace/coursera-testing/drivers/chromedriver");
 	driver= new ChromeDriver();
 		
-	System.out.println("Driver Initalized...");
+	System.out.println("Driver Initialized...");
 	driver.get(prop.getProperty("url"));
 	
 }

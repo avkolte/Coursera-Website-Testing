@@ -20,14 +20,14 @@ import resources.ScreenShot;
 public class SearchTest {
 
 	public WebDriver driver;
-	
+	//Open Broswer with coursera website
 	@BeforeTest
 	public void createDriver() throws IOException
 	{
 		Driver obj = new Driver();
 		driver=obj.initializeDriver();
 	}
-	
+	//Test function for correct search
 	@Test
 	public void rightSearch() throws IOException, InterruptedException
 	{
@@ -41,7 +41,7 @@ public class SearchTest {
 		s.screenShotCapture(driver);
 	
 	}
-
+	//Test function for wrong search by entering wrong keywords
 	@Test
 	public void wrongSearch() throws IOException, InterruptedException
 	{
@@ -57,21 +57,20 @@ public class SearchTest {
 		s.screenShotCapture(driver);
 	
 	}
-
-	/*@Test
+	//Test function for empty search i.e. nothing is passs as keywords
+	@Test
 	public void emptySearch() throws IOException, InterruptedException
 	{
 		LandingPage l = new LandingPage(driver);
-		readExcel e = new readExcel();
-		String input=e.getexcel(2,0);
-		l.getSearchBox().sendKeys(input);
+		l.getSearchBox().sendKeys(Keys.CONTROL+"a");
+		l.getSearchBox().sendKeys(Keys.DELETE);
 		l.getSearchBtn().click();
 		Thread.sleep(10000);
 		ScreenShot s = new ScreenShot();
 		s.screenShotCapture(driver);
 	
-	}*/
-	
+	}
+	//close browser
 @AfterClass
 	public void closeDriver()
 	{

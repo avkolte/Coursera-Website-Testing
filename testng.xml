@@ -3,10 +3,23 @@
 <suite name="Parallel Search Test Suite" parallel="classes" thread-count="4">
   <test name="Search">
   	<classes>
-  		<class name="com.coursera.test.SearchTest"/>
-  		//<class name="com.coursera.test.FilterTest"/>
-  		//<class name="com.coursera.test.HrsRatingTest"/>
-  		//<class name="com.coursera.test.SignUpTest"/>
+  		<class name="com.coursera.test.SearchTest">
+			<methods>
+                <include name="rightSearch" />
+				<include name="wrongSearch" />
+				<include name="emptySearch" />
+			</methods>
+		</class>
+  		<class name="com.coursera.test.FilterTest"/>
+  		<class name="com.coursera.test.HrsRatingTest"/>
+		<class name="com.coursera.test.SignUpTest">
+			<methods>
+                <include name="emptyNameTest" />
+				<include name="emptyEmailTest" />
+				<include name="emptyPasswordTest" />
+				<include name="validRegistrationTest" />				
+			</methods>
+		</class>
   	</classes>
   </test> 
 </suite> 
