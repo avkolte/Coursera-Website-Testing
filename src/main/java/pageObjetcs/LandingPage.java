@@ -22,13 +22,11 @@ public class LandingPage {
 	 FileInputStream fis;
 
 	 
-	public LandingPage(WebDriver driver) {
-
-			
-			this.driver=driver;
-			
+	public LandingPage(WebDriver driver) 
+		{	
+			this.driver=driver;	
 		}
-	
+
 	
 	public WebElement getSearchBox() throws IOException
 	{

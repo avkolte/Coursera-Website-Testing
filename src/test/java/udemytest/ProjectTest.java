@@ -1,4 +1,4 @@
-package com.coursera.test;
+package udemytest;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -17,7 +17,10 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.Assertion;
 
+import pageObjetcs.LandingPage;
 import resources.Driver;
+import resources.ScreenShot;
+import resources.readExcel;
 
 import com.beust.jcommander.Parameter;
 
@@ -27,7 +30,7 @@ import java.net.URL;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
  
-public class SignUpTest{
+public class ProjectTest{
    
 
     boolean status = false;
@@ -43,33 +46,6 @@ public class SignUpTest{
         WebElement signUpButton = driver.findElement(By.xpath("//a[contains(text(),'Join for Free')]"));
         signUpButton.click();
 	}
-   /*
-    //Verifying Privacy policy page redirection
-    @Test
-    public void privacyPolicyRedirectionTest()
-    {
-    WebElement privacyPolicyLink = driver.findElement(By.xpath("//a[contains(text(),'Privacy')]"));
-    privacyPolicyLink.click();
-   
-    Set <String> allWindows = driver.getWindowHandles();
-   
-    for(String handle : allWindows)
-    {
-    driver.switchTo().window(handle);
-    }            
-     
-    String expectedURL = "https://www.coursera.org/about/privacy";
-    String actualURL = driver.getCurrentUrl();
-    //System.out.println(actualURL);
-    Assert.assertEquals(actualURL, expectedURL);
-   
-    String expectedTitle = "Privacy Policy";
-    String actualTitle = driver.getTitle();
-    //System.out.println(actualTitle);
-    Assert.assertEquals(actualTitle, expectedTitle);
-    }    
-   */
-
   
     // Registration without providing Name field
     @Test
@@ -174,11 +150,128 @@ public class SignUpTest{
            WebElement signUp = driver.findElement(By.xpath("/html/body/div[3]/div/div/span/div[3]/div/div/div[3]/div/div/div/div[3]/div[1]/div[1]/form/div/button/span"));
           signUp.click();
       }
- 
+
+      //Test function for correct search
+      @Test
+      public void rightSearch() throws IOException, InterruptedException
+      {
+          LandingPage l = new LandingPage(driver);
+          readExcel e = new readExcel();
+          String input=e.getexcel(0,0);
+          l.getSearchBox().sendKeys(input);
+          l.getSearchBtn().click();
+          Thread.sleep(10000);
+          ScreenShot s = new ScreenShot();
+          s.screenShotCapture(driver);
+      
+      }
+      //Test function for wrong search by entering wrong keywords
+      @Test
+      public void wrongSearch() throws IOException, InterruptedException
+      {
+          LandingPage l = new LandingPage(driver);
+          readExcel e = new readExcel();
+          String input=e.getexcel(1,0);
+          l.getSearchBox().sendKeys(Keys.CONTROL+"a");
+          l.getSearchBox().sendKeys(Keys.DELETE);
+          l.getSearchBox().sendKeys(input);
+          l.getSearchBtn().click();
+          Thread.sleep(10000);
+          ScreenShot s = new ScreenShot();
+          s.screenShotCapture(driver);
+      
+      }
+      //Test function for empty search i.e. nothing is passs as keywords
+      @Test
+      public void emptySearch() throws IOException, InterruptedException
+      {
+          LandingPage l = new LandingPage(driver);
+          l.getSearchBox().sendKeys(Keys.CONTROL+"a");
+          l.getSearchBox().sendKeys(Keys.DELETE);
+          l.getSearchBtn().click();
+          Thread.sleep(10000);
+          ScreenShot s = new ScreenShot();
+          s.screenShotCapture(driver);
+      
+      }
+
+      @Test
+	public void runtest() throws Exception {
+				
+		/*************** To wait for page load *********************/		
+		
+		/*************** To searching for web development *********************/
+		Thread.sleep(10000);     
+		LandingPage l = new LandingPage(driver);
+		readExcel e = new readExcel();
+		String input=e.getexcel(0,0);
+		l.getSearchBox().sendKeys(input);
+		l.getSearchBtn().click();
+		Thread.sleep(10000);    
+		
+		
+		/*************** For setting Language as English *********************/
+	
+		
+		driver.findElement(By.xpath("/html/body/div[3]/div/div/div[1]/div/div/div[1]/div[2]/div[1]/div/div[2]/div/div/div[1]/div/div/div/div/div[1]")).click();
+	    WebElement dropdownValue1 = driver.findElement(By.xpath("//*[@id=\"filter_all_languages_checked_button\"]/label/input"));
+	    dropdownValue1.click();									 
+		Thread.sleep(10000);
+		
+		
+		/*************** For setting Level as Beginner *********************/
+	
+		
+		driver.findElement(By.xpath("/html/body/div[3]/div/div/div[1]/div/div/div[1]/div[2]/div[1]/div/div[2]/div/div/div[4]/div/div/div/div/div[1]")).click();
+	    WebElement dropdownValue2 = driver.findElement(By.xpath("//*[@id=\"filter_skills_checked_button\"]"));
+	    dropdownValue2.click();
+		Thread.sleep(10000);
+		
+		
+		/*************** For setting Learning product as Course *********************/
+	
+		
+		driver.findElement(By.xpath("/html/body/div[3]/div/div/div[1]/div/div/div[1]/div[2]/div[1]/div/div[2]/div/div/div[5]/div/div/div/div/div[1]")).click();
+	    WebElement dropdownValue3 = driver.findElement(By.xpath("//*[@id=\"filter_partners_checked_button\"]/label/input"));
+	    dropdownValue3.click();
+		
+		Thread.sleep(10000);
+		
+    }
+    
+    @Test
+   public void hrsrating()
+   {
+         /* get the first course display after filter  */
+		driver.findElement(By.xpath("/html/body/div[3]/div/div/div[1]/div/div/div[1]/div[2]/div[2]/div/div/div/ul/li[1]/div/a/div/div/div/div[2]/div[1]/h2")).click();
+		
+
+
+        /*  Assert the rating   */
+        
+        String expectedRating = "4.7";
+        WebElement rating = driver.findElement(By.xpath("//span[text()='4.7']"));
+        String actualRating = rating.getText();
+        Assert.assertEquals(actualRating,expectedRating);
+    
+        
+    
+        
+        /*  Assert the Time */
+        
+    //	String expectedTime = "Approx. 8 months to complete";	
+    //	WebElement time = driver.findElement(By.xpath("//div[@class='_xliqh9g']//div[5]//div[2]//div[1]//span"));
+    //	String actualTime = time.getText();
+    //	Assert.assertEquals(actualTime,expectedTime);
+   }
+    
+        
+    
+      
    
     // Closing the browser session after completing each test case
     @AfterClass
-    public void tearDown() throws Exception {
+    public void closeBrowser() throws Exception {
        /*if (driver != null) {
             ((JavascriptExecutor) driver).executeScript("Coursera-status=" + status);
             driver.quit();*/
@@ -187,4 +280,6 @@ public class SignUpTest{
         
     }
 }
+
+
 
